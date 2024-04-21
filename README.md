@@ -4,7 +4,19 @@
 Run a container using nginx image, and mount a directory from your host into the 
 Docker container. example: /home/samy/nginx:/home/nginx (bind mount)
 ```bash
+1) Create a Bind Mount directory 
+mkdir nginx_bindMount
+cd nginx_bindMount/
+touch test.txt
 
+2) Run a container using nginx image
+docker run -d --name nginx_bindMount -v /root/nginx_bindMount:/usr/share/nginx/html nginx-ahmed
+
+3)check if the file is mounted on the machine
+docker exec -it nginx_bindMount bash
+cd /usr/share/nginx/html/
+ls
+the test.txt exists means that it is mounted into the container
 ```
 ---
 
